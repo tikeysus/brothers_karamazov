@@ -1,0 +1,15 @@
+- Discuss inherent weaknesses in SMS-based 2FA.
+  - sim swapping
+  - Encourage the use of app-based authenticators over SMS.
+- Malware and Keyloggers
+  - Discuss how malware can capture 2FA codes or session cookies.
+  - Highlight specific malware strains targeting 2FA-protected accounts.
+- Push Notification Bombing
+  - Describe how attackers exploit push-based 2FA by overwhelming users with login requests until they accidentally approve one.
+- Recommendations for Stronger Security
+  - Suggest alternatives like hardware security keys (e.g., YubiKey, Titan Key).
+- Mention phishing kits like Evilginx that intercept 2FA tokens in real-time.
+- link to the 2fa video of youtuber
+- Real-World Case Studies
+  - Highlight high-profile breaches where 2FA was bypassed, such as Twitter’s 2020 hack or specific targeted attacks on cryptocurrency exchanges.
+
