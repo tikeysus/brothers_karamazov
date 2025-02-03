@@ -1,7 +1,7 @@
-name: Edit
+name: Edit and Commit 
 
 on:
-  push: 
+  workflow_dispatch: 
 
 jobs:
   access:
@@ -11,10 +11,16 @@ jobs:
       - name: Checkout Repo 
         uses: actions/checkout@v4
 
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Go to target directory
+        run: cd /.github/workflows/auto_push/ 
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Open file and edit 
+        run: echo "Adding text - this is a test" >> test_file.txt 
+      
+      - name: Add, commit, and push 
+        run: | 
+          git add text_file.txt 
+          git commit "added minor text"
+          git push origin master
+        
+
