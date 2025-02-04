@@ -15,6 +15,7 @@ def get_access_token():
         "grant_type": "refresh_token",
     }
     response = requests.post(url, data=params).json()
+    print(response) #debugging 
     return response["access_token"]
 
 # Fetch latest Strava activity
