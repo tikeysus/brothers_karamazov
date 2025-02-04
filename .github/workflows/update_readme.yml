@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      - name: List files #for the sake of testing 
+        run: ls -R 
+        
       - name: Run script to fetch and update README
         env:
           CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
