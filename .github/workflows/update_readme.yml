@@ -22,13 +22,13 @@ jobs:
 
       - name: List files #for the sake of testing 
         run: ls -R 
-        
+
       - name: Run script to fetch and update README
         env:
           CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
-        run: python strava/fetch_strava.py
+        run: python .github/workflows/strava/fetch_strava.py
 
       - name: Commit and push changes
         env:
