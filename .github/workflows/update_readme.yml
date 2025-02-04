@@ -1,0 +1,38 @@
+name: Update README with Strava Data
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Runs every hour
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script to fetch and update README
+        env:
+          CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: python fetch_strava.py
+
+      - name: Commit and push changes
+        env:
+          PAT: ${{ secrets.PAT }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "Update README with latest Strava data" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }} HEAD:main
