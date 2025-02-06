@@ -1,8 +1,6 @@
 name: Update README with Strava Data
 
 on:
-  schedule:
-    - cron: "0 * * * *"  # Runs every hour
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -19,9 +17,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install requests
-
-      - name: List files #for the sake of testing 
-        run: ls -R 
 
       - name: Run script to fetch and update README
         env:
